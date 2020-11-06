@@ -6,6 +6,8 @@ import numpy as np
 from dataset.mnist import load_mnist
 from two_layer_net import TwoLayerNet
 
+import matplotlib.pyplot as plt
+
 # データの読み込み
 (x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label=True)
 
@@ -44,3 +46,32 @@ for i in range(iters_num):
         train_acc_list.append(train_acc)
         test_acc_list.append(test_acc)
         print(train_acc, test_acc)
+
+# グラフの描画
+x = np.arange(len(train_acc_list))
+plt.figure()
+plt.plot(x, train_acc_list, label='train acc')
+plt.plot(x, test_acc_list, label='test acc', linestyle='--')
+plt.xlabel("epochs")
+plt.ylabel("accuracy")
+plt.xlim(0, )
+plt.ylim(0, 1.0)
+plt.legend(loc='lower right')
+
+x = np.arange(len(train_loss_list))
+plt.figure()
+plt.plot(x, train_loss_list)
+plt.xlabel("iteration")
+plt.ylabel("loss")
+plt.xlim(0, 10000)
+plt.ylim(0, 9)
+
+x = np.arange(1000)
+plt.figure()
+plt.plot(x, train_loss_list[0:1000])
+plt.xlabel("iteration")
+plt.ylabel("loss")
+plt.xlim(0, 1000)
+plt.ylim(0, 9)
+
+plt.show()
