@@ -22,9 +22,13 @@ def function_2(x):
 
 init_x = np.array([-3.0, 4.0])    
 
-lr = 0.1
+#lr = 0.1
+print("input lr : ", end="")
+lr = float(input())
 step_num = 20
 x, x_history = gradient_descent(function_2, init_x, lr=lr, step_num=step_num)
+
+print(x)
 
 plt.plot( [-5, 5], [0,0], '--b')
 plt.plot( [0,0], [-5, 5], '--b')
